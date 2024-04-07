@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-	name='assignment1',
+	name='assignment2',
 	version='1.0',
 	author='Aryaan Shaikh',
 	author_email='am.shaikh@ufl.edu',
