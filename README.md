@@ -22,7 +22,7 @@ To Conclude, this is a great assignment that emphasizes augmenting data extracti
 
 Datasheets are like instruction manuals for datasets. They provide a clear and concise explanation of what data points are included, what they represent, and how they're formatted. This is especially beneficial for our enriched incident report dataset.  Having a datasheet ensures everyone using the data understands its content and interprets it consistently. Furthermore, datasheets promote collaboration and future analysis.  They document the entire process of creating the data, allowing others to replicate it or understand potential limitations. For instance, the datasheet might mention inconsistencies in how locations were reported. This transparency empowers future data users to make informed decisions and avoid misinterpretations. With a datasheet, your enriched dataset becomes a valuable shared resource.<br><br>
 
-**Datasheets link**:- 
+**Datasheets link**:- <u>https://github.com/Aryaan03/cis6930sp24-assignment2/blob/main/datasheet.md</u>
 
 ## How to install
 ```
