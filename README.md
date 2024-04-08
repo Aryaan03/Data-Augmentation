@@ -42,9 +42,8 @@ pipenv run python -m pytest
 
 ## Demo Implementation 
 
-video link: [Data Engineering Assignment2 demo](https://github.com/Aryaan03/cis6930sp24-assignment1/blob/main/DE_Assignment-1_Demo.mp4)
+video link: [Data Engineering Assignment3 demo](https://github.com/Aryaan03/cis6930sp24-assignment1/blob/main/DE_Assignment-1_Demo.mp4)
 <br>
-![](https://github.com/Aryaan03/cis6930sp24-assignment1/blob/main/DE_Assignment-1_DemoGIF.gif)<br>
 The video is also available in the repository in good quality.<br>
 
 ## Functions
