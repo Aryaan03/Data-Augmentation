@@ -1,4 +1,7 @@
-spacy
-nltk
-en_core_web_sm
 args
+geopy
+pytest
+pypdf
+requests
+pandas
+openmeteo-requests
