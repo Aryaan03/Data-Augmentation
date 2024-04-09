@@ -69,117 +69,87 @@ The video is also available in the repository in good quality.<br>
     • Returns:<br>
         &emsp;- `ExtractText`; The extracted text from the incident data PDF.<br>
 
-3. `CreateDB(Norman, Tab, Header)`<br>
+3. `Database(Norman, Tab, Info)`<br>
     • Description: <br>
-        &emsp;- This function creates a new SQLite database and a table based on the provided parameters using the `sqlite3` module.<br>
-        &emsp;- It will create an SQLite table named "Tab" with specific columns for incident details like known previously like time, number, location, nature, and origin.<br>
-        &emsp;- It Drops the table if it already exists and Creates a new table with the schema based on the provided header information.<br>
+        &emsp;- This function creates and populates an SQLite database and a table based on the provided parameters using the `sqlite3` module.<br>
+        &emsp;- Defines the table schema and creates the table if it doesn't exist. <br>
+        &emsp;- Calculates ranks for location and incidents based on frequency.<br>
+        &emsp;- Inserts data into the table with additional calculations.<br>
     • Parameters: <br>
         &emsp;- `Norman`(str); The name of the SQLite database file.<br>
         &emsp;- `Tab`(str); The name of the table to be created.<br>
-        &emsp;- `Header`(list); The header information for the table.<br>
+        &emsp;- `Info`(list); List containing incident information in the form of tuples.<br>
     • Returns:<br>
         &emsp;- None<br>
 
-4. `PopulateDB(Norman, Tab, Line)`<br>
+4. `Coord(address)`<br>
     • Description: <br>
-        &emsp;- This function populates the SQLite database with the provided data using the `sqlite3` module.<br>
-        &emsp;- Constructs an SQL query to insert the provided data using the `INSERT` query into the specified table.<br>
-        &emsp;- Executes the query for each set of data to be inserted into the table.<br>
+        &emsp;- Retrieves latitude and longitude coordinates of a given address using Geoapify API.<br>
+        &emsp;- Constructs a request to Geoapify API with the address.<br>
+        &emsp;- Parses the response JSON to extract latitude and longitude.<br>
     • Parameters: <br>
-        &emsp;- `Norman`(str); The name of the SQLite database file.<br>
-        &emsp;- `Tab`(str); The name of the table to be created.<br>
-        &emsp;- `Line`(list); The data to be inserted into the table.<br>
+        &emsp;- `address`(str); Address for which latitude and longitude coordinates are to be retrieved.<br>
     • Returns:<br>
-        &emsp;- None<br>
+        &emsp;- `Lat, Long`; Tuple of latitude and longitude coordinates (float, float) if coordinates are found, otherwise (None, None). <br>
 
-5. `Insert(Information)`<br>
+5. `TownSide(loc, CenLat=35.220833, CenLong=-97.443611)`<br>
     • Description: <br>
-        &emsp;- This function processes the incident information into the database.<br>
-        &emsp;- It initializes a list and appends the rows in it.<br>
+        &emsp;- Determines the side of town based on location coordinates.<br>
+        &emsp;- Calculates the angle between the location and the center of the town.<br>
+        &emsp;- Maps the angle to a compass direction.<br>
     • Parameters: <br>
-        &emsp;- `Information` (list); List of incident information.<br>
+        &emsp;- `loc`(str); Location for which the side of the town is to be determined.<br>
+        &emsp;- `CenLat`(float); Latitude of the center point of the town (default is 35.220833).<br>
+        &emsp;- `CenLong`(float); Longitude of the center point of the town (default is -97.443611).<br>
     • Returns:<br>
-        &emsp;- `Latest`(list); The filtered and inserted information.<br>
-
-6. `Status(Norman, Tab)`<br>
-    • Description: <br>
-        &emsp;- This function retrieves and displays the status of incidents in the database using SQL queries and the `sqlite3` module.<br>
-        &emsp;- It Retrieves and prints a list of incidents and their occurrence count, sorted alphabetically by nature, from the specified database table.<br>
-    • Parameters: <br>
-        &emsp;- `Norman`(str); The name of the SQLite database file.<br>
-        &emsp;- `Tab`(str); The name of the table to be created.<br>
-    • Returns:<br>
-        &emsp;- None<br>
+        &emsp;- `Direct[CalcAng]`(str); String indicating the side of town ('N', 'E', 'S', 'W', etc.) based on the location.<br>
         
-7. `Calculate(Norman, Tab)`:<br>
+6. `Weather(Addr, Dat)`:<br>
     • Description: <br>
-       &emsp;- This function executes an SQL query to count the number of entries in the specified database table and returns the count.<br>
-       &emsp;- This function also iterstes through all the rows and prints it from the incident table by executing a SQL query using the `sqlite3` module.<br>
-       &emsp;- It retrieves and prints all rows from the specified database table. <br>
+       &emsp;- Retrieves weather code for a given location and time using OpenMeteo API.<br>
+       &emsp;- Constructs a request to OpenMeteo API with location and time parameters.<br>
+       &emsp;- Retrieves weather data from the API response. <br>
+    • Parameters: <br>
+       &emsp;- `Addr`(str); Address for which weather information is to be retrieved.<br>
+       &emsp;- `Dat`(str); Date and time of the incident in "mm/dd/yyyy hh:mm" format.<br>
+    • Returns:<br>
+       &emsp;- `int(HourDF.iloc[HourTime]['weather_code'])`(int); Integer representing the weather code for the specified time and location.<br>
+
+7. `Output(Norman, Tab)`:<br>
+    • Description: <br>
+       &emsp;- Prints the contents of a specified table in the SQLite database.<br>
+       &emsp;- Executes a SQL query to select data from the specified table.<br>
+       &emsp;- Fetches the data and prints it in a tabular format using Pandas.<br>
     • Parameters: <br>
        &emsp;- `Norman`(str); The name of the SQLite database file.<br>
        &emsp;- `Tab`(str); The name of the table to be created.<br>
     • Returns:<br>
-       &emsp;- `count`(int); The number of entries in the incident table.<br>
-
-8. `main(url)`:<br>
+       &emsp;- None; But it prints the contents of the specified table in the SQLite database.<br>
+       
+8. `Insert(Information, Latest)`<br>
     • Description: <br>
-        &emsp; - Invokes all other functions. <br>
-        &emsp;- Calls the `RetrieveIncidents(url)` function to download incident data from the provided URL.<br>
-        &emsp;- Calls the `ExtractData()` function to extract text from the downloaded incident data PDF.<br>
-        &emsp;- Parses the extracted text to obtain relevant information such as incident time, number, location, nature, and origin. <br>
-        &emsp;- Creates a new SQLite database using the `CreateDB` function Populates the database with the parsed information using the `PopulateDB` function.<br>
-        &emsp;- Calls the `Status` function to retrieve and display the status of incidents in the populated database.<br>
-        &emsp;- Defines a command-line interface using `argparse`.<br>
-        &emsp;- Parses the command-line arguments, specifically the `--incidents` argument for the URL.<br>
-    • Parameters:<br>
-        &emsp; - `url`(str); The URL from which the incident data is to be fetched.<br>
+        &emsp;- Processes and inserts information into the database.<br>
+        &emsp;- Filters out rows with length greater than 1 from the input.<br>
+    • Parameters: <br>
+        &emsp;- `Information` (list); List of incident information.<br>
+        &emsp;- `Latest` (list); Previous information extracted from the incident data.<br>
     • Returns:<br>
-         &emsp; - List of Nature of incidents along with the number of times it occurred long with the number of times it has happened separated by the pipe character.
+        &emsp;- `Latest`(list); Latest information extracted from the incident data.<br>
+
+9. `main(url)`:<br>
+    • Description: <br>
+        &emsp; - Invokes the process of retrieving incident data, processing it, and populating the database.<br>
+        &emsp;- Reads URLs from a file.<br>
+        &emsp;- Retrieves incident data from each URL.<br>
+        &emsp;- Extracts and processes incident information. <br>
+        &emsp;- Populates the database with the processed information.<br>
+        &emsp;- Prints the contents of the database table.<br>
+    • Parameters:<br>
+        &emsp; - `urls_file`(str); File containing URLs of incidents.<br>
+    • Returns:<br>
+         &emsp; - None; But it orchestrates the whole process of retrieving incident data, processing it, and populating the database.
+
         
-   
-## Database Development
-
-    1. Database Creation:
-        - A SQLite database is created to store the incident data.
-        - Database is created using `CreateDB()` function.
-        - The structure of the incident table is defined based on the extracted header information.
-        - Data is stored in a local variable so that it can not only be used for retrieving data but also for populating the databse.
-
-    2. Connect to the Database (`CreateDB()`):
-        - Establish a connection to an SQLite database named "normanpd.db" using the `sqlite3` module.
-        - Create a cursor to interact with the database.
-
-    3. Data Population(`PopulatedDB()` and `Insert()`:
-        - The extracted incident data is inserted into the SQLite database usind `PopulatedDB()` function.
-        - Run an SQL command to check if the table already exists, if so delete the 'incidents' table and create a new table.
-        - Queries are used to execute SQL statements for creating table and headers.
-        - For insertion 'INSERT' statement is used.
-        - Implementing the 'INSERT' command using the cursor.
-        - Each row of incident data corresponds to an entry in the database table.
-
-    4. Data Status and Printing:
-        - The script provides functionality to query the database for statistical analysis of incident data.
-        - Running an SQL query to obtain the number of incidents categorized by nature from the 'incidents' table. 
-        - Ordering results by count (descending) and then by alphabetically by nature.   
-        - Display type of nature of incident along with their respective counts seperated by a pipe '|' symbol. 
-        
-    5. Command-line Interface:
-        - The script can be executed from the command line.
-        - Users provide the URL of the incident summary PDF file as a command-line argument.
-        
-
-Below is a brief overview on how to establish connection, take data, make table, insert, query and close the connection to database:
-        
-    -> Begin by establishing a connection to the "normanpd.db" SQLite database using the sqlite3 module and create a cursor to interact with it.
-    -> Next, craft an SQL statement to generate a table named "incidents" within the database, outlining the columns like incident_time, incident_number, incident_location, nature, and incident_ori, assigning suitable data types to each, such as TEXT.
-    -> Proceed to populate the "incidents" table by iterating through each incident entry in the extracted data. For each entry, formulate an SQL INSERT statement to add the data into the table, executing it with the cursor, and confirming the changes.
-    -> Utilize an SQL query to gather the incident count grouped by nature from the "incidents" table. Arrange the results by count in descending order and then alphabetically by nature.
-    -> Display the sorted incident data in the format "nature | count," providing a clear overview of the incident nature alongside the corresponding count.
-    -> Retrieve all incident data by executing an SQL query to fetch all information from the "incidents" table, returning a list of tuples representing each incident.
-    -> Finally, if the "incidents" table already exists, execute an SQL statement to drop it, preventing conflicts when creating a new table.
-
 ## Testing
 
 Testing using pytest & mocking is done to make sure that all the functions are working independently and properly. Testing is crucial for early bug detection and maintaining code quality. Testing units of code encourages modular, understandable code and integrates seamlessly into continuous integration workflows, boosting integrity. Ultimately, all major functions like Retrieve, ExtractData, CreateDB and more are tested if they are functioning properly. For example. test_create verifies if a database and table is created or not. 
