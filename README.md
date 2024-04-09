@@ -166,21 +166,21 @@ Testing using pytest & mocking is done to make sure that all the functions are w
         - Creates dummy pages with predefined text for testing text extraction.
         - Ensures the extracted text matches expected output, validating correct text extraction without real PDFs.
 
-    3. `test_Create`:
-        - Uses mocking to verify the createdb function successfully creates a database and table.
-        - Checks if sqlite3.connect is called with correct arguments.
-        - Verifies expected SQL queries are executed on the mock cursor.
-        - Ensures commit and close methods are called on the mock connection.
+    3. `test_Coord_valid_address`:
+        - Mocks the response from a web service to simulate getting latitude and longitude coordinates for a given address.
+        - Verifies whether the Coord function correctly extracts and returns the latitude and longitude coordinates.
 
-    4. `test_Populate`:
-        - Mocks sqlite3.connect to verify data insertion calls and expected queries.
-        - Validates if commit and close occur on the mock connection.
-        - Verifies data insertion follows table format, ensuring correct function behavior without a real database.
+    4. `test_TownSide`:
+        - Mocks the functionality of the TownSide function, which presumably determines the side (direction) of a town based on its location.
+        - Validates whether the returned side belongs to a predefined set of directions.
 
-    5. `test_Status`:
-        - Mocks the database connection to return desired data.
-        - Captures printed output of the status function.
-        - Compares captured output to expected string, verifying correct output generation using mocked data.
+    5. `test_Output`:
+        - Mocks the database connection and cursor execution to simulate retrieving data from a database table.
+        - Verifies whether the Output function executes the SQL query correctly.
+
+    6. `test_Insert`:
+        - Mocks the functionality of the Insert function, which inserts data into a list.
+        - Verifies whether the insertion is successful and whether the length of the list increases by one after insertion.
 
 ## Bugs and Assumptions
 
