@@ -152,7 +152,7 @@ The video is also available in the repository in good quality.<br>
         
 ## Testing
 
-Testing using pytest & mocking is done to make sure that all the functions are working independently and properly. Testing is crucial for early bug detection and maintaining code quality. Testing units of code encourages modular, understandable code and integrates seamlessly into continuous integration workflows, boosting integrity. Ultimately, all major functions like Retrieve, ExtractData, CreateDB and more are tested if they are functioning properly. For example. test_create verifies if a database and table is created or not. 
+Testing using pytest & mocking is done to make sure that all the functions are working independently and properly. Testing is crucial for early bug detection and maintaining code quality. Testing units of code encourages modular, understandable code and integrates seamlessly into continuous integration workflows, boosting integrity. Ultimately, all major functions like Retrieve, ExtractData, Database and more are tested if they are functioning properly. For example. test_retrieve verifies if data is fetched from the URL or not. 
 
 
     1. `test_Retrieve`:
@@ -188,9 +188,10 @@ Testing using pytest & mocking is done to make sure that all the functions are w
 • A large PDF files or a high volume of data exceeding system memory or processing limits, can lead to performance degradation or application crashes.<br>
 • Not all columns of a row can be empty at the same time. There should be some entry in atleast one cell of every row.<br>
 • All fields, excluding the 'Nature' field will consist of alphanumeric characters.<br>
-• Assuming that empty entries are only possible in the 'Nature' column. If there are empty entries in any other column it might break the extraction.<br>
+• Assuming that empty entries are not only possible. If there are empty entries are encountered, it might break the extraction.<br>
 • Known bug: Some pdfs that have unsual formatting are not able to parse.<br> 
 • If there are multiple lines in a single cell, then only the first line will be parsed. There is no such cases where the 'Nature' column had multiple lines of text. So, it was not tested. But, if it has, this can be a potential bug.<br>
+• The Runtime for this script is very high (around 10-15 mins for two url links), this is because I am using free API's and they each API call is taking a lot of time.
 • No bugs apart from those mentioned above are known/identified.
 
 ## Version History
@@ -206,8 +207,8 @@ This project is licensed by Aryaan Shaikh©2024.
 
 • [Christan Grant](https://github.com/cegme)- Providing the problem Statement <br>
 • [Yifan Wang](https://github.com/wyfunique)- Testing our code<br>
+• [Geoapify Documentation](https://apidocs.geoapify.com/)- Helped me in understanding how to use Geoapify API key. <br>
+• [Open-Meteo Documentation](https://open-meteo.com/en/docs)- Helped me in understanding the Weather API usage<br>
 • [Pipenv: Python Dev Workflow for Humans](https://pipenv.pypa.io/en/latest/)- Helped me in Installing Pipenv <br>
-• [Google API services](https://cloud.google.com/products?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-b-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_665735422238-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt-Google+Products-Google+Products+General-KWID_43700077225654153-kwd-305853018146&utm_term=KW_google%20cloud%20api-ST_google+cloud+api&gad_source=1&gclid=CjwKCAiA0bWvBhBjEiwAtEsoW4c9xSrIqN7aa-RqxnDZEvpJvMpjHFvof4xKSOGmutlJ6hapBB_iPBoCW4kQAvD_BwE&gclsrc=aw.ds)- Helped me in understanding google maps API usage<br>
-• [Cloud Natural Language API](https://cloud.google.com/natural-language/docs/reference/rest)- Documentation reference for understanding GCP Cloud Natural Language API<br> 
-• [Spacy Models](https://spacy.io/models/en)- Documentation for English Spacy Models <br>
-• [NLTK Tokenize](https://www.nltk.org/api/nltk.tokenize.html)- Documentation for nltk.tokenize package <br>
+• [Extract Text from a PDF](https://pypdf.readthedocs.io/en/latest/user/extract-text.html)- Helped me in extracting text in a fixed width format and changing cells<br>
+ <br>
