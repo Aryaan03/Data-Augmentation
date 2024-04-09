@@ -14,6 +14,8 @@ from datetime import datetime
 from collections import Counter
 import openmeteo_requests
 from retry_requests import retry
+import tabulate
+
 ## Import All the necessary Packages
 
 def RetrieveIncidents(url):
@@ -283,11 +285,11 @@ def Output(Norman, Tab):
     y.close()  
     # Close database connection
 
-def Insert(Information):
+def Insert(Information, Latest):
     # Function to insert and process information
     # Initialize a list to store latest table entry
-        Latest = []
-            
+        # Latest = []
+        #print(Latest)
         for Row in Information:
         # Append rows with length greater than 1 to the Latest list
             if len(Row) > 1:
@@ -303,6 +305,7 @@ def main(urls_file):
         urls = file.readlines()
         #print("Found URLs:", urls)
         # Read URLs
+        Latest =[]
         for url in urls:
             url = url.strip()
             #print("Processing URL:", url)
@@ -315,7 +318,7 @@ def main(urls_file):
             # Split incidents into lines
             Header = re.split(r'\s{2,}', Next[2].strip())
             Information = [re.split(r'\s{2,}', line.strip()) for line in Next[3:-1]]
-            Latest = Insert(Information)
+            Latest = Insert(Information, Latest)
 
     
     Norman = "resources/normanpd.db" # Database name
