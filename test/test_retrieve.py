@@ -1,6 +1,6 @@
 import unittest
 import io
-import assignment2
+import main
 import sys
 from unittest.mock import Mock, patch
 
