@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import Mock, patch
-from a2copy import RetrieveIncidents, ExractData, DataBase, Coord, TownSide, Weather, Output, Insert
+from main import RetrieveIncidents, ExractData, DataBase, Coord, TownSide, Weather, Output, Insert
 
 
 # # Mocking Database function for testing
@@ -14,7 +14,7 @@ from a2copy import RetrieveIncidents, ExractData, DataBase, Coord, TownSide, Wea
 #     mock_cursor.execute.assert_called_once()
 
 # Mocking Coord function for testing
-@patch('a2copy.requests.get')
+@patch('main.requests.get')
 def test_Coord_valid_address(mock_get):
     mock_response = Mock()
     mock_response.status_code = 200
@@ -33,7 +33,7 @@ def test_TownSide():
     assert side in ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE', 'E']
 
 # Mocking Weather function for testing
-# @patch('a2copy.openmeteo_requests.Client')
+# @patch('main.openmeteo_requests.Client')
 # def test_Weather(mock_client):
 #     mock_client.return_value.weather_api.return_value = [
 #     Mock(Hourly=Mock(Time=lambda: 1640995200, TimeEnd=lambda: 1640998800, Interval=lambda: 3600)),
@@ -43,7 +43,7 @@ def test_TownSide():
 #     assert weather_code == 200
 
 # Mocking Output function for testing
-@patch('a2copy.sqlite3.connect')
+@patch('main.sqlite3.connect')
 def test_Output(mock_connect):
     mock_cursor = mock_connect.return_value.cursor.return_value
     mock_cursor.fetchall.return_value = [(1, 12, 200, 1, 'E', 1, 'Nature', 0)]
