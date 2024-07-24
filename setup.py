@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-	name='assignment2',
+	name='Data Augmentation',
 	version='1.0',
 	author='Aryaan Shaikh',
 	author_email='am.shaikh@ufl.edu',
