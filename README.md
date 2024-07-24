@@ -203,7 +203,7 @@ This project is licensed by Aryaan Shaikh©2024.
 
 ## Acknowledgments
 
-• [Christan Grant](https://ceg.me/)-[GitHub](https://github.com/cegme)- Providing the problem Statement for Project<br>
+• [Christan Grant](https://ceg.me/) ([GitHub](https://github.com/cegme))- Providing the problem Statement for Project<br>
 • [Yifan Wang](https://github.com/wyfunique)- Testing my code<br>
 • [Geoapify Documentation](https://apidocs.geoapify.com/)- Helped me in understanding how to use Geoapify API key. <br>
 • [Open-Meteo Documentation](https://open-meteo.com/en/docs)- Helped me in understanding the Weather API usage<br>
