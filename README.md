@@ -1,28 +1,26 @@
-# CIS6930sp24 -- Assignment2
-
-Name: Aryaan Shaikh <br>
-Student ID: 3020-2476
+# Data Augmentation
 
 ## Contact
-
+Name: Aryaan Shaikh <br>
 Email - am.shaikh@ufl.edu <br>
-Project Link: https://github.com/Aryaan03/cis6930sp24-assignment2
+Project Link: https://github.com/Aryaan03/Data-Augmentation
 
 
-## Assignment Description
-This is the 3rd project assignment for the CIS6930 Data Engineering course and is an extension to a previous [Assignment0](https://github.com/Aryaan03/cis6930sp24-assignment0). The main aim of this assignment is to practice data augmentation. In this assignment, we will input url links from a .csv file and for each URL, we'll be extracting incident data from PDF files provided by the Norman, Oklahoma police department's webiste [link](https://www.normanok.gov/public-safety/police-department/crime-prevention-data/department-activity-reports). We'll then use data augmentation techniques to generate additional features for each record. This will involve tasks like assigning a day-of-week value, determining the time of day for the incident, and even fetching the weather data for the location. We'll also be ranking the frequency of locations and incident types to add context to the data. Finally, we'll analyze the data to determine if an EMS response was likely. <br> 
+## Project Description
+This was an optional project for my CIS6930 Data Engineering course and is an extension to a previous project [Web Scraping](https://github.com/Aryaan03/Web-Scraping). The main aim of this project is to practice data augmentation. In this project, we will input url links from a .csv file and for each URL, we'll be extracting incident data from PDF files provided by the Norman, Oklahoma police department's webiste [link](https://www.normanok.gov/public-safety/police-department/crime-prevention-data/department-activity-reports). We'll then use data augmentation techniques to generate additional features for each record. This will involve tasks like assigning a day-of-week value, determining the time of day for the incident, and even fetching the weather data for the location. MOreover, We will also be ranking the frequency of locations and incident types to add context to the data. Finally, we'll analyze the data to determine if an EMS response was likely. <br> 
 
-The ultimate goal here is to create a more informative dataset that can be used for further analysis. To ensure everyone understands this new dataset, we'll put together a detailed data sheet. This will document the entire process we followed, explain each feature in the dataset, and highlight any potential data quality issues we encounter. By the end of this project, we'll have a comprehensive dataset along with a data sheet that guides its use.<br>
+The ultimate goal here is to create a more informative dataset that can be used for further analysis. To ensure everyone understands this new dataset, I have put together a detailed data sheet. This will document the entire process I followed, explain each feature in the dataset, and highlight any potential data quality issues that I encountered. By the end of this project, we'll have a comprehensive dataset along with a data sheet that guides its use.<br>
 
-To Conclude, this is a great assignment that emphasizes augmenting data extraction and gaining more relevant information from data. , sensitivity in handling private information, and efficiency in data processing. It helped us to learn more about data pipeline processes and also presents a hands-on opportunity to engage with real-world data scenarios, nurturing skills vital in the domain of data engineering.
+To Conclude, this is a great project that emphasizes augmenting data extraction, gaining more relevant information from data, sensitivity in handling private information, and efficiency in data processing. It can help you learn more about data pipeline processes and will give a hands-on opportunity to engage with real-world data scenarios, nurturing skills vital in the domain of data engineering.
 <br>
 
 
 ### Datasheets
 
-Datasheets are like instruction manuals for datasets. They provide a clear and concise explanation of what data points are included, what they represent, and how they're formatted. This is especially beneficial for our enriched incident report dataset.  Having a datasheet ensures everyone using the data understands its content and interprets it consistently. Furthermore, datasheets promote collaboration and future analysis.  They document the entire process of creating the data, allowing others to replicate it or understand potential limitations. For instance, the datasheet might mention inconsistencies in how locations were reported. This transparency empowers future data users to make informed decisions and avoid misinterpretations. With a datasheet, your enriched dataset becomes a valuable shared resource.<br><br>
+Datasheets are like instruction manuals for datasets. They provide a clear and concise explanation of what data points are included, what they represent, and how they're formatted. This is especially beneficial for our enriched incident report dataset.  Having a datasheet ensures everyone using the data understands its content and interprets it consistently. Furthermore, datasheets promote collaboration and future analysis. They document the entire process of creating the data, allowing others to replicate it or understand potential limitations. For instance, the datasheet might mention inconsistencies in how locations were reported. This transparency empowers future data users to make informed decisions and avoid misinterpretations. With a datasheet, your enriched dataset becomes a valuable shared resource.<br><br>
 
-**Datasheets link**:- <u>https://github.com/Aryaan03/cis6930sp24-assignment2/blob/main/datasheet.md</u>
+**Datasheets link**:- <u>https://github.com/Aryaan03/Data-Augmentation/blob/main/datasheet.md</u>
+
 
 ## How to install
 ```
@@ -32,7 +30,7 @@ pipenv install
 ## How to run
 Project can be run by using any of the given commands:
 ```
-pipenv run python assignment2.py --urls files.csv
+pipenv run python main.py --urls files.csv
 ```
 
 For testing use command:
@@ -42,7 +40,7 @@ pipenv run python -m pytest
 
 ## Demo Implementation 
 
-video link: [Data Engineering Assignment3 demo](https://github.com/Aryaan03/cis6930sp24-assignment1/blob/main/DE_Assignment-1_Demo.mp4)
+video link: [demo](https://github.com/Aryaan03/Data-Augmentation/blob/main/DE_Assignment-1_Demo.mp4)
 <br>
 The video is also available in the repository in good quality.<br>
 
@@ -205,8 +203,8 @@ This project is licensed by Aryaan Shaikh©2024.
 
 ## Acknowledgments
 
-• [Christan Grant](https://github.com/cegme)- Providing the problem Statement <br>
-• [Yifan Wang](https://github.com/wyfunique)- Testing our code<br>
+• [Christan Grant](https://ceg.me/)-[GitHub](https://github.com/cegme)- Providing the problem Statement for Project<br>
+• [Yifan Wang](https://github.com/wyfunique)- Testing my code<br>
 • [Geoapify Documentation](https://apidocs.geoapify.com/)- Helped me in understanding how to use Geoapify API key. <br>
 • [Open-Meteo Documentation](https://open-meteo.com/en/docs)- Helped me in understanding the Weather API usage<br>
 • [Pipenv: Python Dev Workflow for Humans](https://pipenv.pypa.io/en/latest/)- Helped me in Installing Pipenv <br>
